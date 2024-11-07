@@ -4,11 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform/lightning/lightning.out.js"></script>
-    <title>GP Referral Form</title>
-  </head>
-  <body>
-    <div id="gpReferralForm"></div>
-
     <script>
       $Lightning.use(
         "c:gpReferralFormApp",
@@ -16,7 +11,7 @@
           $Lightning.createComponent(
             "c:gpReferralForm",
             { formId: null, uniqueCode: null },
-            "gpReferralForm",
+            "gp-referral-form",
             (cmp) => {
               console.log("Component created");
             }
@@ -25,5 +20,9 @@
         "https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform"
       );
     </script>
+    <title>GP Referral Form</title>
+  </head>
+  <body>
+    <div id="gp-referral-form"></div>
   </body>
 </html>
