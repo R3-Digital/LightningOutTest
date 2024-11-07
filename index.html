@@ -1,37 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform/lightning/lightning.out.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // Define the app name (Lightning app containing the component)
-    const appName = 'c:gpReferralFormApp';
-    // Define the component name (Flow wrapper component)
-    const componentName = 'c:gpReferralForm';
-    // Define the Lightning endpoint (Experience cloud url)
-    const lightningEndPoint = 'https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform';
-    // Target element in the external page where the component will be inserted
-    const targetElement = document.querySelector('#gp-referral-form');
-    // Component attributes (if any need to be passed to the Lightning component)
-    const componentAttributes = {};
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform/lightning/lightning.out.js"></script>
+    <title>GP Referral Form</title>
+  </head>
+  <body>
+    <div id="gpReferralForm"></div>
 
-    $Lightning.use(appName, () => {
-      $Lightning.createComponent(
-        componentName, 
-        componentAttributes, 
-        targetElement, 
-        (cmp) => {
-          console.log('Component created', cmp)
-        }
+    <script>
+      $Lightning.use(
+        "c:gpReferralFormApp",
+        () => {
+          $Lightning.createComponent(
+            "c:gpReferralForm",
+            { formId: null, uniqueCode: null },
+            "gpReferralForm",
+            (cmp) => {
+              console.log("Component created");
+            }
+          );
+        },
+        "https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform"
       );
-    }, lightningEndPoint);
-   });
-  </script>
-  <title>GP Referral Form</title>
-</head>
-<body>
-  <div id="gp-referral-form"></div>
-</body>
+    </script>
+  </body>
 </html>
