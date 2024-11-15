@@ -13,8 +13,8 @@
           $Lightning.createComponent(
             "c:gpReferralForm",
             {
-              formId: params.get("formId"),
-              uniqueCode: params.get("uniqueCode")
+              formId: params.get("formId") || "",
+              uniqueCode: params.get("uniqueCode") || ""
             },
             "gp-referral-form",
             (cmp) => {
