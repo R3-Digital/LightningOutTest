@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://clinicalpartners--dev.sandbox.my.site.com/gpreferralform/lightning/lightning.out.js"></script>
     <script>
+      const params = new URLSearchParams(window.location.search);
+
       $Lightning.use(
         "c:gpReferralFormApp",
         () => {
           $Lightning.createComponent(
             "c:gpReferralForm",
-            { formId: "", uniqueCode: "" },
+            {
+              formId: params.get("formId"),
+              uniqueCode: params.get("uniqueCode")
+            },
             "gp-referral-form",
             (cmp) => {
               console.log("Component created");
