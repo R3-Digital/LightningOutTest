@@ -4,16 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google tag (gtag.js) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQE1KC0WXZ"></script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-ZQE1KC0WXZ');
-  </script> -->
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -23,19 +13,17 @@
       }); var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5KLQ2Q6C');</script>
+    })(window, document, 'script', 'dataLayer', 'GTM-NN974CX');</script>
   <!-- End Google Tag Manager -->
 
   <script src="https://jdh--r3full.sandbox.my.site.com/londonspermbank/lightning/lightning.out.js"></script>
   <script>
-    console.log('Lightning Out script loaded');
     const params = new URLSearchParams(window.location.search);
 
     window.addEventListener('message', function (event) {
       if (event.data?.event && event.data.source === 'screen_flow') {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push(event.data);
-        console.log('GTM event pushed from Lightning Out html:', event.data);
       }
     });
 
@@ -51,7 +39,6 @@
           "donor-registration-form",
           (cmp) => {
             console.log("Component created");
-            console.log('testing pushing to lightning out component');
           }
         );
       },
@@ -63,7 +50,7 @@
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KLQ2Q6C" height="0" width="0"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NN974CX" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div id="donor-registration-form"></div>
