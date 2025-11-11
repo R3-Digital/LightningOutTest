@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://zigzag--r3surveypp.sandbox.my.site.com/surveyhost/lightning/lightning.out.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+
+      $Lightning.use(
+        "c:surveyApp",
+        () => {
+          $Lightning.createComponent(
+            "c:survey",
+            {
+              formId: params.get("formId") || "",
+              uniqueCode: params.get("uniqueCode") || ""
+            },
+            "survey",
+            (cmp) => {
+              console.log("Survey loaded");
+            }
+          );
+        },
+        "	https://zigzag--r3surveypp.sandbox.my.site.com/surveyhost"
+      );
+    </script>
+    <title>Zigzag Survey</title>
+  </head>
+  <body>
+    <div id="zigzag-survey"></div>
+  </body>
+</html>
