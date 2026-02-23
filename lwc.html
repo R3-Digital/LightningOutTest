@@ -27,15 +27,15 @@
       });
 
       $Lightning.use(
-        "c:lwcIfvFormApp",
+        "c:lwcIvfFormApp",
         () => {
           $Lightning.createComponent(
             "c:lwcIvfForm",
             {
-              encrypytedString: params.get("encrypytedString") || "",
+              encrypytedString: params.get("encryptedString") || "",
               uniqueCode: params.get("uniqueCode") || ""
             },
-            "lwc-ifv-form",
+            "lwc-ivf-form",
             (cmp) => { console.log("Component created"); }
           );
         },
