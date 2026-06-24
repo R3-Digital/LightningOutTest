@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="https://evolvepsychologyservices--r3devevuk.sandbox.my.site.com/assessments/lightning/lightning.out.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+
+      $Lightning.use(
+        "c:rtcReferralFormWrapper",
+        () => {
+          $Lightning.createComponent(
+            "c:rtcReferralFormFlow",
+            {
+              formId: params.get("formId") || "",
+              uniqueCode: params.get("uniqueCode") || ""
+            },
+            "rtc-referral-form",
+            (cmp) => {
+              console.log("Component created");
+            }
+          );
+        },
+        "https://evolvepsychologyservices--r3devevuk.sandbox.my.site.com/assessments"
+      );
+    </script>
+    <title>RTC Referral Form</title>
+  </head>
+  <body>
+   
+    <div id="rtc-referral-form"></div>
+  </body>
+</html>
