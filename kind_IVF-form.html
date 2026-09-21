@@ -39,8 +39,7 @@
           $Lightning.createComponent(
             "c:kindBookingForm",
             {
-              formId: params.get("formId") || "",
-              uniqueCode: params.get("uniqueCode") || "",
+              uniqueCode: params.get("correlationId") || "",
             },
             "kind-booking-form",
             (cmp) => {},
