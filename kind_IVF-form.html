@@ -22,8 +22,136 @@
     </script>
     <!-- End Google Tag Manager -->
 
+    <style>
+      /* ---- Kind IVF palette --------------------------------------------
+       * Mirrors the Bookings LWR site's Head Markup, where these are also
+       * defined but mostly unused by the CSS below (components there read
+       * them directly). Kept here for consistency and so a future rule
+       * can reference them without redefining the palette.
+       * ---------------------------------------------------------------- */
+      :root {
+        --kind-color-primary: #b196eb;
+        --kind-color-primary-hover: #e8779a;
+        --kind-color-ink: #45413d;
+        --kind-color-on-brand: #ffffff;
+        --kind-color-on-ink: #ffffff;
+        --kind-color-muted: #d2d1d1;
+        --kind-color-error: #b91c1c;
+
+        /* SLDS's own public styling hooks for the brand button variant.
+           Experience Builder sets these automatically from its Theme
+           panel; Lightning Out has no such layer, so nothing sets them
+           unless we do here. */
+        --slds-c-button-brand-color-background: var(--kind-color-primary);
+        --slds-c-button-brand-color-border: var(--kind-color-primary);
+        --slds-c-button-brand-text-color: var(--kind-color-on-brand);
+        --slds-c-button-brand-color-background-hover: var(--kind-color-ink);
+        --slds-c-button-brand-color-border-hover: var(--kind-color-ink);
+        --slds-c-button-brand-text-color-hover: var(--kind-color-on-ink);
+        --slds-c-button-brand-color-background-active: var(--kind-color-ink);
+        --slds-c-button-brand-color-border-active: var(--kind-color-ink);
+        --slds-c-button-brand-text-color-active: var(--kind-color-on-ink);
+      }
+
+      /* ---- Screen container --------------------------------------------
+       * The box around each screen is a <lightning-card> in our own
+       * components, used with no title, actions or footer, so it is
+       * purely decorative.
+       * ---------------------------------------------------------------- */
+      .slds-card {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+      }
+
+      /* The rule above the flow's Previous and Next buttons. */
+      .slds-docked-form-footer,
+      .slds-form-element__divider {
+        border: none;
+        box-shadow: none;
+      }
+
+      /* ---- Screen component validation message --------------------------
+       * The "Please choose..." text the Flow runtime prints itself when a
+       * custom component's validate() returns isValid: false. Rendered
+       * inside <flowruntime-error-content>, a platform custom element.
+       * A plain selector loses to the runtime's own compiled CSS, hence
+       * !important. A platform release could rename this tag.
+       * ---------------------------------------------------------------- */
+      flowruntime-error-content,
+      flowruntime-error-content * {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        color: var(--kind-color-error) !important;
+        text-align: center !important;
+      }
+
+      /* ---- Flow stage path ---------------------------------------------
+       * Current stage lilac, completed stages dark, upcoming grey.
+       * Unsupported: SLDS publishes no styling hooks for Path, so this
+       * targets its internal class names and a Salesforce release could
+       * rename them, silently reverting the path to its own colours.
+       * ---------------------------------------------------------------- */
+      .slds-path .slds-path__item.slds-is-current,
+      .slds-path .slds-path__item.slds-is-active {
+        background-color: var(--kind-color-primary);
+      }
+      .slds-path .slds-path__item.slds-is-complete {
+        background-color: var(--kind-color-ink);
+      }
+      .slds-path .slds-path__item.slds-is-incomplete {
+        background-color: var(--kind-color-muted);
+      }
+      .slds-path .slds-path__item.slds-is-current .slds-path__link,
+      .slds-path .slds-path__item.slds-is-active .slds-path__link {
+        background-color: var(--kind-color-primary);
+        color: var(--kind-color-on-brand);
+      }
+      .slds-path .slds-path__item.slds-is-complete .slds-path__link {
+        background-color: var(--kind-color-ink);
+        color: var(--kind-color-on-ink);
+      }
+      .slds-path .slds-path__item.slds-is-incomplete .slds-path__link {
+        background-color: var(--kind-color-muted);
+        color: var(--kind-color-ink);
+      }
+      .slds-path .slds-path__item.slds-is-current .slds-path__link::after,
+      .slds-path .slds-path__item.slds-is-active .slds-path__link::after,
+      .slds-path .slds-path__item.slds-is-current .slds-path__link::before,
+      .slds-path .slds-path__item.slds-is-active .slds-path__link::before {
+        border-left-color: var(--kind-color-primary);
+        background-color: var(--kind-color-primary);
+      }
+      .slds-path .slds-path__item.slds-is-complete .slds-path__link::after,
+      .slds-path .slds-path__item.slds-is-complete .slds-path__link::before {
+        border-left-color: var(--kind-color-ink);
+        background-color: var(--kind-color-ink);
+      }
+      .slds-path .slds-path__item.slds-is-incomplete .slds-path__link::after,
+      .slds-path .slds-path__item.slds-is-incomplete .slds-path__link::before {
+        border-left-color: var(--kind-color-muted);
+        background-color: var(--kind-color-muted);
+      }
+      .slds-path .slds-path__item.slds-is-current::before,
+      .slds-path .slds-path__item.slds-is-current::after,
+      .slds-path .slds-path__item.slds-is-active::before,
+      .slds-path .slds-path__item.slds-is-active::after {
+        border-color: var(--kind-color-primary);
+        background-color: var(--kind-color-primary);
+      }
+      .slds-path .slds-path__item.slds-is-complete::before,
+      .slds-path .slds-path__item.slds-is-complete::after {
+        border-color: var(--kind-color-ink);
+        background-color: var(--kind-color-ink);
+      }
+      .slds-path .slds-path__item.slds-is-incomplete::before,
+      .slds-path .slds-path__item.slds-is-incomplete::after {
+        border-color: var(--kind-color-muted);
+        background-color: var(--kind-color-muted);
+      }
+    </style>
+
     <script src="https://jdh--r3dev.sandbox.my.site.com/kindivfbookingform/lightning/lightning.out.js"></script>
-    //change this to production url once everything deployed to prod
     <script>
       const params = new URLSearchParams(window.location.search);
 
@@ -46,7 +174,7 @@
             (cmp) => {},
           );
         },
-        "https://jdh--r3dev.sandbox.my.site.com/kindivfbookingform", //change this to production url once everything deployed to prod
+        "https://jdh--r3dev.sandbox.my.site.com/kindivfbookingform", //change this to production url once everything deployed to production
       );
     </script>
     <title>Kind IVF Booking Form</title>
