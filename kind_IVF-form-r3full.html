@@ -183,6 +183,29 @@
       lightning-progress-step.slds-is-incomplete {
         background-color: var(--kind-color-muted) !important;
       }
+      /* The chevron tips of each step are the step element's own ::before and
+         ::after. SLDS colours them green for completed steps and pale grey for
+         incomplete ones, regardless of the background set above. */
+      lightning-progress-step.slds-is-current::before,
+      lightning-progress-step.slds-is-current::after,
+      lightning-progress-step.slds-is-active::before,
+      lightning-progress-step.slds-is-active::after,
+      lightning-progress-step.slds-is-current:hover::before,
+      lightning-progress-step.slds-is-current:hover::after {
+        background: var(--kind-color-primary) !important;
+      }
+      lightning-progress-step.slds-is-complete::before,
+      lightning-progress-step.slds-is-complete::after,
+      lightning-progress-step.slds-is-complete:hover::before,
+      lightning-progress-step.slds-is-complete:hover::after {
+        background: var(--kind-color-ink) !important;
+      }
+      lightning-progress-step.slds-is-incomplete::before,
+      lightning-progress-step.slds-is-incomplete::after,
+      lightning-progress-step.slds-is-incomplete:hover::before,
+      lightning-progress-step.slds-is-incomplete:hover::after {
+        background: var(--kind-color-muted) !important;
+      }
     </style>
 
     <script src="https://jdh--r3full.sandbox.my.site.com/kindivfbookingform/lightning/lightning.out.js"></script>
