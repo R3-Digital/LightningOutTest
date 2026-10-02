@@ -167,6 +167,22 @@
         background-image: none !important;
         background-color: var(--kind-color-primary) !important;
       }
+      /* The path steps are <lightning-progress-step> custom elements that
+         carry the slds-path__item classes themselves. SLDS gives that host
+         element its own background (navy for the current step, pale grey for
+         the rest), which shows through at the rounded ends of the bar. The
+         .slds-path rules above cannot reach it: .slds-path lives in the
+         progress indicator's shadow tree, not above the step. */
+      lightning-progress-step.slds-is-current,
+      lightning-progress-step.slds-is-active {
+        background-color: var(--kind-color-primary) !important;
+      }
+      lightning-progress-step.slds-is-complete {
+        background-color: var(--kind-color-ink) !important;
+      }
+      lightning-progress-step.slds-is-incomplete {
+        background-color: var(--kind-color-muted) !important;
+      }
     </style>
 
     <script src="https://jdh--r3full.sandbox.my.site.com/kindivfbookingform/lightning/lightning.out.js"></script>
