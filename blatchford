@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://blatchforduk--partcopy.my.salesforce.com/lightning/lightning.out.js"></script>
+</head>
+<body>
+    <div id="flowContainer"></div>
+    <script>
+        $Lightning.use("c:ACS_Return_Repair_Questionnaire_LO", function() {
+            $Lightning.createComponent(
+                "lightning:flow",
+                { flowApiName: "Screen_Flow_ACS_Return_Repair_Questionnaire_Public" },
+                "flowContainer",
+                function(cmp) {
+                    cmp.startFlow("Screen_Flow_ACS_Return_Repair_Questionnaire_Public");
+                }
+            );
+        });
+    </script>
+</body>
+</html>
