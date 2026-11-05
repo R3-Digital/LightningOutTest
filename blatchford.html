@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="https://blatchforduk--partcopy.sandbox.my.salesforce.com/lightning/lightning.out.js"></script>
-</head>
-<body>
-    <div id="flowContainer"></div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://blatchforduk--partcopy.sandbox.my.site.com/acsreturnrepair/lightning/lightning.out.js"></script>
     <script>
-        $Lightning.use("c:ACS_Return_Repair_Questionnaire_LO", function() {
-            $Lightning.createComponent(
-                "lightning:flow",
-                { flowApiName: "Screen_Flow_ACS_Return_Repair_Questionnaire_Public" },
-                "flowContainer",
-                function(cmp) {
-                    cmp.startFlow("Screen_Flow_ACS_Return_Repair_Questionnaire_Public");
-                }
-            );
-        });
+      $Lightning.use(
+        "c:ACS_Return_Repair_Questionnaire_LO",
+        () => {
+          $Lightning.createComponent(
+            "c:ACS_Return_Repair_Questionnaire_Flow",
+            {},
+            "flowContainer",
+            (cmp) => {
+              console.log("Component created");
+            }
+          );
+        },
+        "https://blatchforduk--partcopy.sandbox.my.site.com/acsreturnrepair"
+      );
     </script>
-</body>
+    <title>ACS Return / Repair Questionnaire</title>
+  </head>
+  <body>
+    <div id="flowContainer"></div>
+  </body>
 </html>
